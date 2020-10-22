@@ -24,7 +24,6 @@ const router = (app) => {
     // For example www.webpage.com
   app.get('/', controllers.index);
 
-    app.get('/', controllers.dogindex);
 
     // catch for any other GET request. The * means anything
   app.get('/*', controllers.notFound);
