@@ -69,7 +69,9 @@ const hostPage4 = (req, res) => {
 
 const getName = (req, res) => {
     res.json({
-        name: lastAdded.name
+        name: lastAdded.name,
+        breed: lastAdded.breed,
+        age: lastAdded.age,
     });
 };
 
