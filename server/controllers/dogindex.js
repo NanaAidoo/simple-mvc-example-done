@@ -67,7 +67,7 @@ const hostPage4 = (req, res) => {
     readAllDogs(req, res, callback);
 };
 
-const getName = (req, res) => {
+const getDogName = (req, res) => {
     res.json({
         name: lastAdded.name,
         breed: lastAdded.breed,
@@ -75,7 +75,7 @@ const getName = (req, res) => {
     });
 };
 
-const setName = (req, res) => {
+const setDogName = (req, res) => {
     if (!req.body.dogname || !req.body.breed || !req.body.age) {
         return res.status(400).json({
             error: 'name,breed and age are all required'
@@ -108,7 +108,7 @@ const setName = (req, res) => {
     })
 }
 
-const seachName = (req, res) => {
+const searchName = (req, res) => {
     if(!req.query.name){
         return res.status(400).json({ error: 'Name is required to perform a search' });
     }
@@ -149,8 +149,8 @@ module.exports = {
   page3: hostPage3,
   page4: hostPage4,
   readDog,
-  getName,
-  setName,
+  getDogName,
+  setDogName,
   updateLast,
   searchName,
   notFound,
