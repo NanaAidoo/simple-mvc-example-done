@@ -20,7 +20,7 @@ const hostIndex = (req, res) => {
 };
 
 const readAllDogs = (req, res, callback) => {
-    Cat.find(callback).lean();
+    Dog.find(callback).lean();
 };
 
 const readDog = (req, res) => {
