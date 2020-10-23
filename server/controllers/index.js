@@ -340,8 +340,6 @@ const setDogName = (req, res) => {
 
     const newDog = new Dog(dogData);
 
-    const savePromise = newDog.save();
-
 };
 
 const searchDogName = (req, res) => {
@@ -365,7 +363,6 @@ const searchDogName = (req, res) => {
         }
         
         doc.age++
-        console.log(doc.age);
 
         return res.json({
             name: doc.name,
