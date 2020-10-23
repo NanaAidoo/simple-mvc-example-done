@@ -398,7 +398,6 @@ module.exports = {
     updateLast,
     searchName,
     readDog,
-    getDogName,
     setDogName,
     searchDogName,
     notFound,
