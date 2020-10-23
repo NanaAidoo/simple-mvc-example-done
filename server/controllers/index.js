@@ -339,7 +339,8 @@ const setDogName = (req, res) => {
     savePromise.then(() => {
         res.json({
             name: newDog.name,
-            beds: newDog.bedsOwned
+            breed: newDog.breed,
+            age: newDog.age,
         });
     });
 
