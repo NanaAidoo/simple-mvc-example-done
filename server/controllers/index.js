@@ -323,7 +323,7 @@ const notFound = (req, res) => {
 const setDogName = (req, res) => {
     if (!req.body.dogname || !req.body.breed || !req.body.age) {
         return res.status(400).json({
-            error: 'name,breed and age are all required'
+            error: 'name, breed and age are all required'
         });
     }
     const dogData = {
