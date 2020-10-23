@@ -108,7 +108,7 @@ const setDogName = (req, res) => {
     })
 }
 
-const searchName = (req, res) => {
+const searchDogName = (req, res) => {
     if(!req.query.name){
         return res.status(400).json({ error: 'Name is required to perform a search' });
     }
