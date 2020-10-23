@@ -360,6 +360,7 @@ const searchDogName = (req, res) => {
     }
 
     return Dog.findByName(req.query.name, (err, doc) => {
+        let docs = doc
         if (err) {
             return res.status(500).json({
                 err
@@ -372,13 +373,13 @@ const searchDogName = (req, res) => {
             });
         }
         
-        doc.age++
+        docs.age++
         const savePromise = doc.save();
         
         return savePromise.then(() => res.json({
             name: doc.name,
             breed: doc.breed,
-            age: doc.age
+            age: docs.age
         }));
 
     });
