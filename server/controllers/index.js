@@ -365,6 +365,7 @@ const searchDogName = (req, res) => {
         }
         
         doc.age++
+        console.log(doc.age);
 
         return res.json({
             name: doc.name,
