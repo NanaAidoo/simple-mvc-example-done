@@ -363,12 +363,14 @@ const searchDogName = (req, res) => {
         }
         
         doc.age++
-
-        return res.json({
+        const savePromise = doc.save();
+        
+        savePromise.then(() => res.json({
             name: doc.name,
             breed: doc.breed,
             age: doc.age
-        });
+        }));
+
     });
 };
 
