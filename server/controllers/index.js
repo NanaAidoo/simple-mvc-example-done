@@ -363,11 +363,13 @@ const searchDogName = (req, res) => {
                 error: 'No dogs found'
             });
         }
+        
+        doc.age++
 
         return res.json({
             name: doc.name,
             breed: doc.breed,
-            age: doc.age++
+            age: doc.age
         });
     });
 };
