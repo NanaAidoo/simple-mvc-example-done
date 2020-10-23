@@ -318,13 +318,7 @@ const notFound = (req, res) => {
 
 
 
-const getDogName = (req, res) => {
-    res.json({
-        name: lastAdded.name,
-        breed: lastAdded.breed,
-        age: lastAdded.age,
-    });
-};
+
 
 const setDogName = (req, res) => {
     if (!req.body.dogname || !req.body.breed || !req.body.age) {
@@ -339,6 +333,21 @@ const setDogName = (req, res) => {
     };
 
     const newDog = new Dog(dogData);
+    
+    const savePromise = newDog.save();
+
+    savePromise.then(() => {
+        res.json({
+            name: newDog.name,
+            beds: newDog.bedsOwned
+        });
+    });
+
+    savePromise.catch((err) => res.status(500).json({
+        err
+    }));
+
+    return res;
 
 };
 
