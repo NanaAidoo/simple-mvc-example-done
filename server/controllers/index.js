@@ -47,6 +47,9 @@ const readAllCats = (req, res, callback) => {
     Cat.find(callback).lean();
 };
 
+const readAllDogs = (req, res, callback) => {
+    Dog.find(callback).lean();
+};
 
 // function to find a specific cat on request.
 // Express functions always receive the request and the response.
@@ -72,6 +75,21 @@ const readCat = (req, res) => {
     // Behind the scenes this runs the findOne method.
     // You can find the findByName function in the model file.
     Cat.findByName(name1, callback);
+};
+
+const readDog = (req, res) => {
+    const name1 = req.query.name;
+
+    const callback = (err, doc) => {
+        if (err) {
+            return res.status(500).json({
+                err
+            });
+        }
+
+        return res.json(doc);
+    };
+    Dog.findByName(name1, callback);
 };
 
 // function to handle requests to the page1 page
@@ -297,24 +315,8 @@ const notFound = (req, res) => {
     });
 };
 
-const readAllDogs = (req, res, callback) => {
-    Dog.find(callback).lean();
-};
 
-const readDog = (req, res) => {
-    const name1 = req.query.name;
 
-    const callback = (err, doc) => {
-        if (err) {
-            return res.status(500).json({
-                err
-            });
-        }
-
-        return res.json(doc);
-    };
-    Dog.findByName(name1, callback);
-};
 
 const getDogName = (req, res) => {
     res.json({
@@ -340,21 +342,6 @@ const setDogName = (req, res) => {
 
     const savePromise = newDog.save();
 
-    savePromise.then(() => {
-        lastAdded = newDog;
-
-        res.json({
-            name: lastAdded.name,
-            breed: lastAdded.breed,
-            age: lastAdded.age
-        });
-
-        savePromise.catch((err) => res.status(500).json({
-            err
-        }));
-
-        return res;
-    });
 };
 
 const searchDogName = (req, res) => {
